@@ -16,7 +16,7 @@ Puppet udev Module
 Overview
 --------
 
-Manages the udev package
+Manages the udev package and device rules
 
 
 Description

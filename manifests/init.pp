@@ -1,6 +1,13 @@
 # == Class: udev
 #
-# simple template
+# Manages the udev package and device rules
+#
+# This class does not need to be declared in the manfiest when using the
+# udev::rule defined type.
+#
+# === Examples
+#
+# include udev
 #
 class udev inherits udev::params {
 
