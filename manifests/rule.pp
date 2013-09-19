@@ -5,8 +5,9 @@
 #
 # === Parameters
 #
-# Note that either *content* or *source* must be specified unless *ensure* is
-# 'absent'.
+# Note that either the *content* or *source* parameter must be specified unless
+# *ensure* is 'absent' and that these parameters are mutually exclusive; you
+# can not specify both.
 #
 # [*ensure*]
 #

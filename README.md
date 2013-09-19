@@ -28,11 +28,20 @@ This module installs and manages the
 Usage
 -----
 
+### Basic Example
+
+This class does not need to be declared in the manfiest when using the
+`udev::rule` defined type.
+
 ```puppet
     include udev
 ```
 
-### Manage a `udev` rule
+### Managing a `udev` rules
+
+Note that either the `content` or `source` parameter must be specified unless
+`ensure` is `absent`and that these parameters are mutually exclusive; you can
+not specify both.
 
 ```puppet
     udev::rule { '60-raw.rules':
@@ -40,6 +49,29 @@ Usage
       content => 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"',
     }
 ```
+
+As is commonly done with the `file` type, you can pass the output of the `template()` function to `content`.
+
+```puppet
+    udev::rule { '99-foo.rules':
+      ensure  => present,
+      content => template('mymodule/foo.rules.erb'),
+    }
+```
+
+```puppet
+    udev::rule { '99-foo.rules':
+      ensure  => present,
+      source  => "puppet:///modules/${module_name}/foo.rules"
+    }
+```
+
+```puppet
+    udev::rule { '99-foo.rules':
+      ensure  => absent,
+    }
+```
+
 
 ### Manually trigging a `udev` device rules reload
 
