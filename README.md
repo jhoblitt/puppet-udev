@@ -32,7 +32,16 @@ Usage
     include udev
 ```
 
-### Manually trigging a udev rules reload
+### Manage a `udev` rule
+
+```puppet
+    udev::rule { '60-raw.rules':
+      ensure  => present,
+      content => 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"',
+    }
+```
+
+### Manually trigging a `udev` device rules reload
 
 ```puppet
     file { '/etc/etc/udev/rules.d/99-myfrobnicator.rules':
