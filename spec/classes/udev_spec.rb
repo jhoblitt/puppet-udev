@@ -7,6 +7,7 @@ describe 'udev', :type => :class do
 
     it { should include_class('udev') }
     it { should contain_package('udev').with_ensure(:present) }
+    it { should contain_class('udev::udevadm') }
   end
 
 end

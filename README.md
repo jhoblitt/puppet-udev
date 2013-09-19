@@ -32,6 +32,15 @@ Usage
     include udev
 ```
 
+### Manually trigging a udev rules reload
+
+```puppet
+    file { '/etc/etc/udev/rules.d/99-myfrobnicator.rules':
+      ...
+      notify => Class['udev::udevadm'],
+    }
+```
+
 
 Limitations
 -----------

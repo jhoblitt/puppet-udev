@@ -4,6 +4,7 @@
 #
 class udev::params {
   $udev_package = 'udev'
+  $udevadm_path = '/sbin'
 
   case $::osfamily {
     'redhat': {}
