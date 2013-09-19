@@ -1,7 +1,7 @@
-Puppet module_skel Module
+Puppet udev Module
 =========================
 
-[![Build Status](https://travis-ci.org/jhoblitt/puppet-module_skel.png)](https://travis-ci.org/jhoblitt/puppet-module_skel)
+[![Build Status](https://travis-ci.org/jhoblitt/puppet-udev.png)](https://travis-ci.org/jhoblitt/puppet-udev)
 
 #### Table of Contents
 
@@ -16,24 +16,37 @@ Puppet module_skel Module
 Overview
 --------
 
+Manages the udev package
+
 
 Description
 -----------
 
+This module installs and manages the
+[`udev`](http://www.freedesktop.org/software/systemd/man/udev.html) package.
 
 Usage
 -----
+
+```puppet
+    include udev
+```
 
 
 Limitations
 -----------
 
+At present, only support for `$::osfamily == 'RedHat'` has been implimented.
+Adding other Linux distrubtions should be trivial.
+
 ### Tested Platforms
+
+* el6.x
 
 
 Support
 -------
 
 Please log tickets and issues at
-[github](https://github.com/jhoblitt/puppet-module_skel/issues)
+[github](https://github.com/jhoblitt/puppet-udev/issues)
 

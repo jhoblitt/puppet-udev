@@ -2,6 +2,8 @@
 #
 # simple template
 #
-class udev {
-
+class udev inherits udev::params {
+  package{ $udev::params::udev_package:
+    ensure => present,
+  }
 }
