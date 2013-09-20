@@ -76,7 +76,7 @@ define udev::rule(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    notify  => Class['udev::udevadm'],
+    notify  => Class['udev::udevadm::trigger'],
   }
 
   $safe_config = merge(

@@ -87,7 +87,7 @@ As is commonly done with the `file` type, you can pass the output of the `templa
 ```puppet
     file { '/etc/etc/udev/rules.d/99-myfrobnicator.rules':
       ...
-      notify => Class['udev::udevadm'],
+      notify => Class['udev::udevadm::trigger'],
     }
 ```
 

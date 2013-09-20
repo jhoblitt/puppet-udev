@@ -36,7 +36,7 @@ class udev(
     notify  => Class['udev::udevadm::logpriority'],
   }
 
-  class { 'udev::udevadm': } ->
+  class { 'udev::udevadm::trigger': } ->
   class { 'udev::udevadm::logpriority': udev_log => $udev_log } ->
   Class['udev']
 }

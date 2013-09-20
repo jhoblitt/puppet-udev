@@ -16,7 +16,7 @@ describe 'udev', :type => :class do
           :mode    => '0644',
         }).
         with_content(/udev_log="#{udev_log}"/)
-      should contain_class('udev::udevadm')
+      should contain_class('udev::udevadm::trigger')
       should contain_class('udev::udevadm::logpriority').
         with_udev_log(udev_log)
     end
