@@ -98,6 +98,10 @@ Limitations
 At present, only support for `$::osfamily == 'RedHat'` has been implemented.
 Adding other Linux distributions should be trivial.
 
+This module currently isn't using `puppetlabs-concat` for building up rule
+files as that approach presents difficulties in being able to remove an empty
+file (one without any fragments).
+
 ### Tested Platforms
 
 * el6.x
