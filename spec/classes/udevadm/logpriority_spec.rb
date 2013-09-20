@@ -1,24 +1,17 @@
 require 'spec_helper'
 
-describe 'udev', :type => :class do
+describe 'udev::udevadm::logpriority', :type => :class do
 
   shared_examples 'udev_log_param' do |udev_log, params|
     let(:params) { params }
 
     it do
-      should include_class('udev')
-      should contain_package('udev').with_ensure('present')
-      should contain_file('/etc/udev/udev.conf').
-        with({
-          :ensure  => 'file',
-          :owner   => 'root',
-          :group   => 'root',
-          :mode    => '0644',
-        }).
-        with_content(/udev_log="#{udev_log}"/)
-      should contain_class('udev::udevadm')
       should contain_class('udev::udevadm::logpriority').
         with_udev_log(udev_log)
+      should contain_exec("udevadm control --log-priority=#{udev_log}").with({
+        :refreshonly => true,
+        :path        => '/sbin',
+      })
     end
   end
 
@@ -46,7 +39,7 @@ describe 'udev', :type => :class do
 
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should include_class('udev::udevadm::logpriority')
         }.to raise_error(Puppet::Error, /does not match/)
       end
     end

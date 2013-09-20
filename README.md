@@ -30,14 +30,20 @@ Usage
 
 ### Basic Example
 
-This class does not need to be declared in the manfiest when using the
+This class does not need to be manually included in the manifest when using the
 `udev::rule` defined type.
 
 ```puppet
     include udev
 ```
 
-### Managing a `udev` rules
+### Managing `udev` syslog verbosity
+
+```puppet
+    class { 'udev': udev_log => 'debug' }
+```
+
+### Managing `udev` rules
 
 Note that either the `content` or `source` parameter must be specified unless
 `ensure` is `absent`and that these parameters are mutually exclusive; you can
