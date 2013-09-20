@@ -39,6 +39,9 @@ This class does not need to be manually included in the manifest when using the
 
 ### Managing `udev` syslog verbosity
 
+Controls the value of `udev_log` in `udev.conf` and change the runtime syslog
+verbosity of the daemon.
+
 ```puppet
     class { 'udev': udev_log => 'debug' }
 ```
@@ -79,7 +82,7 @@ As is commonly done with the `file` type, you can pass the output of the `templa
 ```
 
 
-### Manually trigging a `udev` device rules reload
+### Manually triggering a `udev` device rules reload
 
 ```puppet
     file { '/etc/etc/udev/rules.d/99-myfrobnicator.rules':
@@ -92,8 +95,8 @@ As is commonly done with the `file` type, you can pass the output of the `templa
 Limitations
 -----------
 
-At present, only support for `$::osfamily == 'RedHat'` has been implimented.
-Adding other Linux distrubtions should be trivial.
+At present, only support for `$::osfamily == 'RedHat'` has been implemented.
+Adding other Linux distributions should be trivial.
 
 ### Tested Platforms
 
