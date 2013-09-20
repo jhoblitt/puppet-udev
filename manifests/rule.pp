@@ -54,16 +54,12 @@ define udev::rule(
     if $content {
       fail("${title}: parameters \$source and \$content are mutually exclusive")
     }
-
-    $safe_source = { source => $source }
   } elsif $content {
     validate_string($content)
 
     if $source {
       fail("${title}: parameters \$source and \$content are mutually exclusive")
     }
-
-    $safe_content = { content => $content }
   } else {
     # one of $source or $content is required unless we're removing the file,
     if $ensure != 'absent' {
@@ -76,15 +72,11 @@ define udev::rule(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
+    content => $content,
+    source  => $source,
     notify  => Class['udev::udevadm::trigger'],
   }
 
-  $safe_config = merge(
-    $config,
-    $safe_source,
-    $safe_content
-  )
-
-  create_resources( 'file', { "/etc/udev/rules.d/${title}" => $safe_config } )
+  create_resources( 'file', { "/etc/udev/rules.d/${title}" => $config } )
 
 }
