@@ -71,7 +71,7 @@ As is commonly done with the `file` type, you can pass the output of the `templa
 ```puppet
     udev::rule { '99-foo.rules':
       ensure  => present,
-      source  => "puppet:///modules/${module_name}/foo.rules"
+      source  => "puppet:///modules/${module_name}/foo.rules",
     }
 ```
 
