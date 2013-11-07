@@ -41,7 +41,7 @@
 define udev::rule(
   $ensure  = present,
   $content = undef,
-  $source  = undef,
+  $source  = undef
 ) {
   validate_re($ensure, '^present$|^absent$')
 

@@ -20,7 +20,7 @@
 # include udev
 #
 class udev(
-  $udev_log = 'err',
+  $udev_log = 'err'
 ) inherits udev::params {
   validate_re($udev_log, '^err$|^info$|^debug$')
 
