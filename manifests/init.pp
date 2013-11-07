@@ -34,9 +34,7 @@ class udev(
     group   => 'root',
     mode    => '0644',
     notify  => Class['udev::udevadm::logpriority'],
-  }
-
+  } ->
   class { 'udev::udevadm::trigger': } ->
-  class { 'udev::udevadm::logpriority': udev_log => $udev_log } ->
-  Class['udev']
+  class { 'udev::udevadm::logpriority': udev_log => $udev_log }
 }
