@@ -24,6 +24,7 @@ class udev(
 ) inherits udev::params {
   validate_re($udev_log, '^err$|^info$|^debug$')
 
+  anchor { 'udev:begin': } ->
   package{ $udev::params::udev_package:
     ensure => present,
   } ->
@@ -34,9 +35,14 @@ class udev(
     group   => 'root',
     mode    => '0644',
     notify  => Class['udev::udevadm::logpriority'],
-  }
+  } ->
+  anchor { 'udev:end': }
 
+  Anchor['udev:begin'] ->
   class { 'udev::udevadm::trigger': } ->
+  Anchor['udev:end']
+
+  Anchor['udev:begin'] ->
   class { 'udev::udevadm::logpriority': udev_log => $udev_log } ->
-  Class['udev']
+  Anchor['udev:end']
 }
