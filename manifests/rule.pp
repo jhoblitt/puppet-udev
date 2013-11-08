@@ -66,17 +66,27 @@ define udev::rule(
       fail("${title}: parameter \$source or \$content is required")
     }
   }
-
-  $config = {
-    ensure  => $ensure,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => $content,
-    source  => $source,
-    notify  => Class['udev::udevadm::trigger'],
+  if $content != undef {
+    $config = {
+      ensure  => $ensure,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => $content,
+      notify  => Class['udev::udevadm::trigger']
+    }
+  } else {
+    $config = {
+      ensure  => $ensure,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      source  => $source,
+      notify  => Class['udev::udevadm::trigger']
+    }
   }
 
-  create_resources( 'file', { "/etc/udev/rules.d/${title}" => $config } )
+  $file = { "/etc/udev/rules.d/${title}" => $config }
+  create_resources( 'file', $file )
 
 }
