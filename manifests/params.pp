@@ -8,6 +8,7 @@ class udev::params {
 
   case $::osfamily {
     'redhat': {}
+    'debian': {}
     default: {
       fail("Module ${module_name} is not supported on ${::operatingsystem}")
     }
