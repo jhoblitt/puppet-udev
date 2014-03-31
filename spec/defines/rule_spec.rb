@@ -7,7 +7,7 @@ describe 'udev::rule', :type => :define do
     let(:params) { params }
 
     it do
-      should include_class('udev')
+      should contain_class('udev')
       should contain_file("/etc/udev/rules.d/#{title}").with({
         :ensure  => state,
         :owner   => 'root',
@@ -23,7 +23,13 @@ describe 'udev::rule', :type => :define do
 
 
   describe 'for osfamily RedHat' do
-    let(:facts) {{ :osfamily => 'RedHat' }}
+    let :facts do 
+      {
+        :osfamily                  => 'RedHat',
+        :operatingsystemmajrelease => '6',
+      }
+    end
+  
 
     describe 'content => foo' do
       it_behaves_like(
@@ -77,7 +83,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /parameter \$source or \$content is required/)
       end
     end
@@ -93,7 +99,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /parameters \$source and \$content are mutually exclusive/)
       end
     end
@@ -110,7 +116,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /parameters \$source and \$content are mutually exclusive/)
       end
     end
@@ -121,7 +127,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /does not match/)
       end
     end
@@ -132,7 +138,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /is not a string/)
       end
     end
@@ -143,7 +149,7 @@ describe 'udev::rule', :type => :define do
   
       it 'should fail' do
         expect {
-          should include_class('udev')
+          should contain_class('udev')
         }.to raise_error(Puppet::Error, /is not a string/)
       end
     end

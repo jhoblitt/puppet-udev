@@ -23,7 +23,7 @@ class udev::udevadm::logpriority(
 ) inherits udev::params {
   validate_re($udev_log, '^err$|^info$|^debug$')
 
-  exec { "udevadm control --log-priority=${udev_log}":
+  exec { "${udev::params::udevlogpriority}=${udev_log}":
     refreshonly => true,
     path        => [$udev::params::udevadm_path],
   }
