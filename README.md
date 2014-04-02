@@ -111,6 +111,7 @@ file (one without any fragments).
 ### Tested Platforms
 
 * el6.x
+* Debian/Ubuntu
 
 
 Versioning
