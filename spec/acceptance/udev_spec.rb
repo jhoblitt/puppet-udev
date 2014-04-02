@@ -1,4 +1,4 @@
-require 'spec_helper_system'
+require 'spec_helper_acceptance'
 
 describe 'udev class' do
   describe 'running puppet code' do
@@ -16,13 +16,8 @@ describe 'udev class' do
       EOS
 
       # Run it twice and test for idempotency
-      puppet_apply(pp) do |r|
-        r.exit_code.should_not == 1
-        r.stderr.should be_empty
-        r.refresh
-        r.exit_code.should be_zero
-        r.stderr.should be_empty
-      end
+      expect(apply_manifest(pp, :catch_failures => true).stderr).to eq("")
+      expect(apply_manifest(pp, :catch_changes => true).stderr).to eq("")
     end
   end
 
