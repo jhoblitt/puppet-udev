@@ -1,5 +1,5 @@
 name    'jhoblitt-udev'
-version '1.0.3'
+version '1.1.0'
 
 author 'Joshua Hoblitt <jhoblitt@cpan.org>'
 license 'Apache'
