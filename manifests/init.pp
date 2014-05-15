@@ -20,9 +20,11 @@
 # include udev
 #
 class udev(
-  $udev_log = 'err'
+  $udev_log = 'err',
+  $config_file_replace = true
 ) inherits udev::params {
   validate_re($udev_log, '^err$|^info$|^debug$')
+  validate_bool($config_file_replace)
 
   anchor { 'udev:begin': } ->
   package{ $udev::params::udev_package:
@@ -34,6 +36,7 @@ class udev(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
+    replace => $config_file_replace,
     notify  => Class['udev::udevadm::logpriority'],
   } ->
   anchor { 'udev:end': }
