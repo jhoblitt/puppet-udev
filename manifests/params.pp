@@ -7,8 +7,25 @@ class udev::params {
   $udevadm_path = '/sbin'
 
   case $::osfamily {
-    'redhat': {}
-    'debian': {}
+    'debian': {
+      $udevlogpriority = 'udevadm control --log-priority'
+      $udevtrigger     = 'udevadm trigger'
+    }
+    'redhat': {
+      case $::operatingsystemmajrelease {
+        '5': {
+          $udevtrigger     = 'udevtrigger'
+          $udevlogpriority = 'udevcontrol log_priority'
+        }
+        '6','7': {
+          $udevtrigger     = 'udevadm trigger'
+          $udevlogpriority = 'udevadm control --log-priority'
+        }
+        default: {
+          fail("Module ${module_name} is not supported on RedHat release ${::operatingsystemmajrelease}")
+        }
+      }
+    }
     default: {
       fail("Module ${module_name} is not supported on ${::operatingsystem}")
     }

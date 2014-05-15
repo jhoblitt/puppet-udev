@@ -17,7 +17,7 @@ class udev::udevadm::trigger inherits udev::params {
   # cases.
   # http://unix.stackexchange.com/questions/39370/how-to-reload-udev-rules-without-reboot
 
-  exec { 'udevadm trigger':
+  exec { $udev::params::udevtrigger:
     refreshonly => true,
     path        => [$udev::params::udevadm_path],
   }
