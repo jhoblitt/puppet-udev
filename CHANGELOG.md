@@ -1,5 +1,14 @@
 
 #### [Current]
+ * [5fc917e](../../commit/5fc917e) - __(Joshua Hoblitt)__ Merge pull request [#4](../../issues/4) from nosolutions/rhel5
+ * [5340961](../../commit/5340961) - __(Joshua Hoblitt)__ update travis matrix
+ * [308052a](../../commit/308052a) - __(Joshua Hoblitt)__ update .gitignore
+ * [df9fe39](../../commit/df9fe39) - __(Joshua Hoblitt)__ update LICNESE copyright notice
+ * [904a9ce](../../commit/904a9ce) - __(Klaus Wagner)__ Extend module to support RHEL5 as well because the udev utilies have different names. Also implement a protection method udev.conf in case override is not expected. (New param config_file_replace)
+ * [2111a85](../../commit/2111a85) - __(Klaus Wagner)__ Change stdlib uri to http for easier calling behind proxy
+
+#### v1.0.3
+ * [64ba826](../../commit/64ba826) - __(Joshua Hoblitt)__ bump version to v1.0.3
  * [00253ed](../../commit/00253ed) - __(Joshua Hoblitt)__ Merge pull request [#3](../../issues/3) from Mayflower/support_ubuntu
 
 add osfamily debian to params
