@@ -48,34 +48,38 @@ define udev::rule(
   include udev
 
   # only $source or $content are allowed
+
+  $config_base = {
+    ensure => $ensure,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    notify => Class['udev::udevadm::trigger'],
+  }
   if $source {
     validate_string($source)
 
     if $content {
       fail("${title}: parameters \$source and \$content are mutually exclusive")
     }
+    $config_content = { source => $source }
   } elsif $content {
     validate_string($content)
 
     if $source {
       fail("${title}: parameters \$source and \$content are mutually exclusive")
     }
+    $config_content = { content => $content }
   } else {
     # one of $source or $content is required unless we're removing the file,
     if $ensure != 'absent' {
       fail("${title}: parameter \$source or \$content is required")
+    } else {
+      $config_content = {}
     }
   }
 
-  $config = {
-    ensure  => $ensure,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => $content,
-    source  => $source,
-    notify  => Class['udev::udevadm::trigger'],
-  }
+  $config = merge($config_base, $config_content)
 
   create_resources( 'file', { "/etc/udev/rules.d/${title}" => $config } )
 
