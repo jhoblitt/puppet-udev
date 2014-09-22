@@ -1,5 +1,23 @@
 
 #### [Current]
+ * [7ae9cb7](../../commit/7ae9cb7) - __(Joshua Hoblitt)__ Merge pull request [#6](../../issues/6) from oholiab/master
+
+Case out unused parameters in rules.pp
+ * [f212f03](../../commit/f212f03) - __(Joshua Hoblitt)__ Merge pull request [#7](../../issues/7) from pecastro/master
+
+Allow usage on more recent Fedora systems.
+ * [afd6ec5](../../commit/afd6ec5) - __(Paulo E. Castro)__ Reinstate the operatingsystem check.
+ * [6cab5a5](../../commit/6cab5a5) - __(Paulo E. Castro)__ Allow usage on more recent Fedora systems.
+ * [a9ac08d](../../commit/a9ac08d) - __(Matt Carroll)__ Case out unused parameters in rules.pp
+
+Was breaking because of empty source in puppet 3.6.2
+
+#### v1.1.0
+ * [f936f90](../../commit/f936f90) - __(Joshua Hoblitt)__ Merge pull request [#5](../../issues/5) from jhoblitt/feature/v1.1.0
+
+bump version to v1.1.0
+ * [292831d](../../commit/292831d) - __(Joshua Hoblitt)__ add el5.x to supported platforms list
+ * [183c640](../../commit/183c640) - __(Joshua Hoblitt)__ bump version to v1.1.0
  * [5fc917e](../../commit/5fc917e) - __(Joshua Hoblitt)__ Merge pull request [#4](../../issues/4) from nosolutions/rhel5
  * [5340961](../../commit/5340961) - __(Joshua Hoblitt)__ update travis matrix
  * [308052a](../../commit/308052a) - __(Joshua Hoblitt)__ update .gitignore
