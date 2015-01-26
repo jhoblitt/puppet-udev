@@ -1,0 +1,20 @@
+{
+  "name": "jhoblitt-udev",
+  "version": "1.2.0",
+  "author": "Joshua Hoblitt <jhoblitt@cpan.org>",
+  "summary": "Manages the udev package and device rules",
+  "license": "Apache-2.0",
+  "source": "https://github.com/jhoblitt/puppet-udev.git",
+  "project_page": "https://github.com/jhoblitt/puppet-udev",
+  "issues_url": "https://github.com/jhoblitt/puppet-udev/issues",
+  "operatingsystem_support": [
+    { "operatingsystem": "RedHat", "operatingsystemrelease": [ "5", "6" ] },
+    { "operatingsystem": "CentOS", "operatingsystemrelease": [ "5", "6" ] },
+    { "operatingsystem": "Scientific", "operatingsystemrelease": [ "5", "6" ] },
+    { "operatingsystem": "Debian", "operatingsystemrelease": [ "6", "7" ] },
+    { "operatingsystem": "Ubuntu", "operatingsystemrelease": [ "12.04", "14.04" ] }
+  ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.0.0 < 5.0.0" }
+  ]
+}
