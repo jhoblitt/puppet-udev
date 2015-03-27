@@ -28,8 +28,13 @@ class udev::params {
             $udevtrigger     = 'udevtrigger'
             $udevlogpriority = 'udevcontrol log_priority'
           }
-          '6','7': {
+          '6': {
             $udev_package = 'udev'
+            $udevtrigger     = 'udevadm trigger'
+            $udevlogpriority = 'udevadm control --log-priority'
+          }
+          '7': {
+            $udev_package = 'systemd'
             $udevtrigger     = 'udevadm trigger'
             $udevlogpriority = 'udevadm control --log-priority'
           }
