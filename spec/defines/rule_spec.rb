@@ -23,13 +23,12 @@ describe 'udev::rule', :type => :define do
 
 
   describe 'for osfamily RedHat' do
-    let :facts do 
+    let :facts do
       {
         :osfamily                  => 'RedHat',
         :operatingsystemmajrelease => '6',
       }
     end
-  
 
     describe 'content => foo' do
       it_behaves_like(
@@ -80,7 +79,7 @@ describe 'udev::rule', :type => :define do
 
     describe 'no params' do
       let(:title) { '99-foo.rules' }
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')
@@ -96,7 +95,7 @@ describe 'udev::rule', :type => :define do
           :source  => 'foo',
         }
       end
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')
@@ -113,7 +112,7 @@ describe 'udev::rule', :type => :define do
           :source  => 'foo',
         }
       end
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')
@@ -124,7 +123,7 @@ describe 'udev::rule', :type => :define do
     describe 'ensure => invalid' do
       let(:title) { '99-foo.rules' }
       let(:params) {{ :ensure => 'invalid' }}
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')
@@ -135,7 +134,7 @@ describe 'udev::rule', :type => :define do
     describe 'content => true' do
       let(:title) { '99-foo.rules' }
       let(:params) {{ :content => true }}
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')
@@ -146,7 +145,7 @@ describe 'udev::rule', :type => :define do
     describe 'source => true' do
       let(:title) { '99-foo.rules' }
       let(:params) {{ :source => true }}
-  
+
       it 'should fail' do
         expect {
           should contain_class('udev')

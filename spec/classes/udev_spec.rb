@@ -24,7 +24,7 @@ describe 'udev', :type => :class do
   end
 
   describe 'for osfamily RedHat' do
-    let :facts do 
+    let :facts do
       {
         :osfamily                  => 'RedHat',
         :operatingsystemmajrelease => '6',

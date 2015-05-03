@@ -133,4 +133,3 @@ See Also
 --------
 
 * [`udev` manpage](http://www.freedesktop.org/software/systemd/man/udev.html)
-
