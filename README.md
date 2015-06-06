@@ -14,6 +14,7 @@ Puppet udev Module
     * [Manually triggering a `udev` device rules reload](#manually-triggering-a-udev-device-rules-reload)
 4. [Limitations](#limitations)
     * [Tested Platforms](#tested-platforms)
+    * [Puppet Version Compatibility](#puppet-version-compatibility)
 5. [Versioning](#versioning)
 6. [Support](#support)
 7. [Contributing](#contributing)
@@ -114,6 +115,13 @@ file (one without any fragments).
 * el6.x
 * el5.x
 * Debian/Ubuntu
+
+### Puppet Version Compatibility
+
+Versions | Puppet 2.7 | Puppet 3.x | Puppet 4.x
+:--------|:----------:|:----------:|:----------:
+**1.x**  | **yes**    | **yes**    | no
+**2.x**  | no         | **yes**    | **yes**
 
 
 Versioning
