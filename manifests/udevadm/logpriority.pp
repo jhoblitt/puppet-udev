@@ -25,6 +25,6 @@ class udev::udevadm::logpriority(
 
   exec { "${udev::params::udevlogpriority}=${udev_log}":
     refreshonly => true,
-    path        => [$udev::params::udevadm_path],
+    path        => $udev::params::udevadm_path,
   }
 }
