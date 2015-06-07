@@ -1,6 +1,16 @@
 require 'spec_helper_acceptance'
 
 describe 'udev class' do
+  maj = fact_on 'master', 'operatingsystemmajrelease'
+
+  package_name = nil
+  case maj.to_i
+  when 5, 6
+    package_name = 'udev'
+  when 7
+    package_name = 'systemd'
+  end
+
   describe 'running puppet code' do
     it 'should work with no errors' do
       pp = <<-EOS
@@ -21,7 +31,7 @@ describe 'udev class' do
     end
   end
 
-  describe package('udev') do
+  describe package(package_name) do
     it { should be_installed }
   end
 
