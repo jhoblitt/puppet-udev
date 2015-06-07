@@ -31,7 +31,7 @@ describe 'udev::udevadm::logpriority', :type => :class do
   describe 'for osfamily RedHat and operatingsystemmajrelease 6' do
     let(:facts) do
         { :osfamily                  => 'RedHat',
-          :operatingsystemmajrelease => '6',
+          :operatingsystemmajrelease => 6,
         }
     end
 
@@ -66,7 +66,7 @@ describe 'udev::udevadm::logpriority', :type => :class do
   describe 'for osfamily RedHat and operatingsystemmajrelease 5' do
     let(:facts) do
         { :osfamily                  => 'RedHat',
-          :operatingsystemmajrelease => '5',
+          :operatingsystemmajrelease => 5,
         }
     end
 
