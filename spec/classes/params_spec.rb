@@ -5,7 +5,7 @@ describe 'udev::params', :type => :class do
     let :facts do
       {
         :osfamily                  => 'RedHat',
-        :operatingsystemmajrelease => '6',
+        :operatingsystemmajrelease => 6,
       }
     end
 
@@ -17,7 +17,7 @@ describe 'udev::params', :type => :class do
     let :facts do
       {
         :osfamily                  => 'RedHat',
-        :operatingsystemmajrelease => '4',
+        :operatingsystemmajrelease => 4,
       }
     end
 
