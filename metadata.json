@@ -1,6 +1,6 @@
 {
   "name": "jhoblitt-udev",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Joshua Hoblitt <jhoblitt@cpan.org>",
   "summary": "Manages the udev package and device rules",
   "license": "Apache-2.0",
