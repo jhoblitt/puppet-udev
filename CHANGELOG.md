@@ -1,5 +1,13 @@
 
 #### [Current]
+ * [42e0b46](../../commit/42e0b46) - __(Joshua Hoblitt)__ additional puppet 4 compatibility
+ * [4670766](../../commit/4670766) - __(Joshua Hoblitt)__ add official support for el7.x
+ * [178bafa](../../commit/178bafa) - __(Joshua Hoblitt)__ fix whitespace issues
+ * [8e273a6](../../commit/8e273a6) - __(Sam Wouters)__ On RH7 udev is provided by systemd package
+ * [357b821](../../commit/357b821) - __(Joshua Hoblitt)__ Merge pull request [#11](../../issues/11) from jhoblitt/feature/v2.0.0
+
+Feature/v2.0.0
+ * [a3a45b6](../../commit/a3a45b6) - __(Joshua Hoblitt)__ bump version to v2.0.0
  * [75a7d2f](../../commit/75a7d2f) - __(Joshua Hoblitt)__ add Puppet Version Compatibility subsection to README
  * [8c37d19](../../commit/8c37d19) - __(Joshua Hoblitt)__ update README boilerplate
  * [141af06](../../commit/141af06) - __(Joshua Hoblitt)__ fix rspec puppet 4 compatibility
