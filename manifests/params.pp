@@ -7,6 +7,7 @@ class udev::params {
 
   $udev_log     = 'err'
   $udevadm_path = '/sbin'
+  $rules        = undef
 
   case $::osfamily {
     'debian': {

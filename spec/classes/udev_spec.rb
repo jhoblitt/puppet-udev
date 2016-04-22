@@ -79,6 +79,17 @@ describe 'udev', :type => :class do
       end
     end
 
+    describe 'rule parameter' do
+      let(:params) {{ 'rules' => { '99-foo.rules' => { 'content' => 'generic_rule' }}}}
+      it { should contain_file("/etc/udev/rules.d/99-foo.rules").with({
+          :owner   => 'root',
+          :group   => 'root',
+          :mode    => '0644',
+          :content => 'generic_rule',
+      })}
+    end
+
   end
+
 
 end
