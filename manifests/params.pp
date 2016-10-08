@@ -9,7 +9,7 @@ class udev::params {
     'debian': {
       $udev_package    = 'udev'
       $udevlogpriority = 'udevadm control --log-priority'
-      $udevtrigger     = 'udevadm trigger'
+      $udevtrigger     = 'udevadm trigger --action=change'
     }
     'redhat': {
       if $::operatingsystem == 'Fedora' {
@@ -30,12 +30,12 @@ class udev::params {
           }
           '6': {
             $udev_package    = 'udev'
-            $udevtrigger     = 'udevadm trigger'
+            $udevtrigger     = 'udevadm trigger --action=change'
             $udevlogpriority = 'udevadm control --log-priority'
           }
           '7': {
             $udev_package    = 'systemd'
-            $udevtrigger     = 'udevadm trigger'
+            $udevtrigger     = 'udevadm trigger --action=change'
             $udevlogpriority = 'udevadm control --log-priority'
           }
           default: {

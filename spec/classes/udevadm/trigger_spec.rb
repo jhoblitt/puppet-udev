@@ -11,7 +11,7 @@ describe 'udev::udevadm::trigger', :type => :class do
 
     it { should contain_class('udev::udevadm::trigger') }
     it do
-      should contain_exec('udevadm trigger').with({
+      should contain_exec('udevadm trigger --action=change').with({
         :refreshonly => true,
         :path        => ['/sbin'],
       })
