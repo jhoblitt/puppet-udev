@@ -25,7 +25,7 @@ end
 
 group :beaker do
   gem 'serverspec',               :require => false
-  gem 'beaker',                   :require => false
+  gem 'beaker', '<= 2.26.0',      :require => false
   gem 'beaker-rspec',             :require => false
   gem 'pry',                      :require => false
   gem 'travis-lint',              :require => false
