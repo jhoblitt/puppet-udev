@@ -28,6 +28,7 @@ describe 'udev', :type => :class do
       {
         :osfamily                  => 'RedHat',
         :operatingsystemmajrelease => '6',
+        :operatingsystem           => 'RedHat',
       }
     end
 
