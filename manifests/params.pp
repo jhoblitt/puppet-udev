@@ -3,6 +3,9 @@
 # This class should be considered private.
 #
 class udev::params {
+  $config_file_replace = true
+
+  $udev_log     = 'err'
   $udevadm_path = '/sbin'
 
   case $::osfamily {
