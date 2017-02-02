@@ -1,5 +1,44 @@
 
 #### [Current]
+ * [2a30d93](../../commit/2a30d93) - __(Joshua Hoblitt)__ update jhoblitt email address
+ * [e92236f](../../commit/e92236f) - __(Joshua Hoblitt)__ update copyright year (2017)
+ * [7f57d80](../../commit/7f57d80) - __(Joshua Hoblitt)__ Merge pull request [#24](../../issues/24) from jhoblitt/plumbing/update
+
+update build/test plumbing
+ * [e22d9ad](../../commit/e22d9ad) - __(Joshua Hoblitt)__ add beaker:centos-7-docker to travis matrix
+ * [408f695](../../commit/408f695) - __(Joshua Hoblitt)__ update beaker plumbing
+ * [b3b2725](../../commit/b3b2725) - __(Joshua Hoblitt)__ add dockeer based beaker nodesets
+ * [84334e8](../../commit/84334e8) - __(Joshua Hoblitt)__ remove vagrant based beaker nodesets
+ * [d582c95](../../commit/d582c95) - __(Joshua Hoblitt)__ update gem set
+ * [c1cc3ae](../../commit/c1cc3ae) - __(Joshua Hoblitt)__ Merge pull request [#22](../../issues/22) from nexecook/default_action
+
+explictly use the change action for udevadm trigger
+ * [5f7b5ab](../../commit/5f7b5ab) - __(Eric Cook)__ remove ruby < 2.0 testing
+ * [2f5addf](../../commit/2f5addf) - __(Eric Cook)__ explictly use the change action for udevadm trigger centos 6 defaults to --action=add https://lists.ubuntu.com/archives/ubuntu-devel/2009-January/027260.html https://bugzilla.redhat.com/show_bug.cgi?id=570355
+ * [4abfdeb](../../commit/4abfdeb) - __(Joshua Hoblitt)__ Merge pull request [#16](../../issues/16) from noodle10000/master
+
+Fix params.pp where Fedora release version is checked
+ * [1dedeb2](../../commit/1dedeb2) - __(Craig Smith)__ typo, need to quote the string to compare $::operatingsystemmajrelease to
+ * [675434c](../../commit/675434c) - __(Craig Smith)__ use versioncmp to compare fedora release (in puppet v4 $::operatingsystemmajrelease is treated strictly as a string)
+ * [e834722](../../commit/e834722) - __(Joshua Hoblitt)__ Merge pull request [#13](../../issues/13) from ajmaidak/4xparser
+
+operatingsystemmajrelease fact is a string
+ * [8d595c7](../../commit/8d595c7) - __(Alexander J. Maidak)__ Cleanup tests for int->string conversion on facts
+
+4x does not magically convert between ints and strings
+for facts.
+
+ * [6c13c64](../../commit/6c13c64) - __(Alexander J. Maidak)__ operatingsystemmajrelease fact is a string
+
+Fix params.pp for 4x parser.  The puppet 4x parser is type sensitive,
+strings are not magically converted to ints and vice-versa.  The
+operatingsystemmajrelease fact is returned by facter as a string:
+https://tickets.puppetlabs.com/browse/FACT-962
+
+ * [dd9141f](../../commit/dd9141f) - __(Joshua Hoblitt)__ Merge pull request [#12](../../issues/12) from jhoblitt/feature/v2.1.0
+
+bump version to v2.1.0
+ * [82a8239](../../commit/82a8239) - __(Joshua Hoblitt)__ bump version to v2.1.0
  * [42e0b46](../../commit/42e0b46) - __(Joshua Hoblitt)__ additional puppet 4 compatibility
  * [4670766](../../commit/4670766) - __(Joshua Hoblitt)__ add official support for el7.x
  * [178bafa](../../commit/178bafa) - __(Joshua Hoblitt)__ fix whitespace issues
