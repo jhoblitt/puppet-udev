@@ -27,6 +27,7 @@ describe 'udev::rule', :type => :define do
       {
         :osfamily                  => 'RedHat',
         :operatingsystemmajrelease => '6',
+        :operatingsystem           => 'RedHat',
       }
     end
 
