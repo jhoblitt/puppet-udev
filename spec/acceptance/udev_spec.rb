@@ -1,14 +1,10 @@
 require 'spec_helper_acceptance'
 
 describe 'udev class' do
-  maj = fact_on 'master', 'operatingsystemmajrelease'
-
-  package_name = nil
-  case maj.to_i
-  when 5, 6
-    package_name = 'udev'
-  when 7
+  if $systemd
     package_name = 'systemd'
+  else
+    package_name = 'udev'
   end
 
   describe 'running puppet code' do
@@ -25,9 +21,7 @@ describe 'udev class' do
         }
       EOS
 
-      # Run it twice and test for idempotency
-      expect(apply_manifest(pp, :catch_failures => true).stderr).to eq("")
-      expect(apply_manifest(pp, :catch_changes => true).stderr).to eq("")
+      apply2(pp)
     end
   end
 
