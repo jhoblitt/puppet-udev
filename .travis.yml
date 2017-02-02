@@ -9,6 +9,13 @@ env:
   - PUPPET_GEM_VERSION="~> 3.7"
   - PUPPET_GEM_VERSION="~> 4.9"
 matrix:
+  include:
+    - rvm: '2.2'
+      sudo: required
+      services: docker
+      env: BEAKER_set="centos-7-docker"
+      script: travis_retry bundle exec rake beaker
+      bundler_args: --without release
   exclude:
     - rvm: '2.2'
       env: PUPPET_GEM_VERSION="~> 3.7"
