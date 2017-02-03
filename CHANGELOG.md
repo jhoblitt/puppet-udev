@@ -1,5 +1,16 @@
 
 #### [Current]
+ * [8a81b90](../../commit/8a81b90) - __(Joshua Hoblitt)__ Merge pull request [#26](../../issues/26) from jhoblitt/jcpunk-create_resources
+
+fixup of [#19](../../issues/19)
+ * [cbdef8e](../../commit/cbdef8e) - __(Pat Riehecky)__ Add parameter to udev class to create rules automatically
+ * [eea0992](../../commit/eea0992) - __(Joshua Hoblitt)__ Merge pull request [#18](../../issues/18) from jcpunk/use-params
+
+Use udev::params for default parameter values
+ * [a353003](../../commit/a353003) - __(Joshua Hoblitt)__ Merge pull request [#25](../../issues/25) from jhoblitt/release/2.2.0
+
+bump version to 2.2.0
+ * [cd45749](../../commit/cd45749) - __(Joshua Hoblitt)__ bump version to 2.2.0
  * [2a30d93](../../commit/2a30d93) - __(Joshua Hoblitt)__ update jhoblitt email address
  * [e92236f](../../commit/e92236f) - __(Joshua Hoblitt)__ update copyright year (2017)
  * [7f57d80](../../commit/7f57d80) - __(Joshua Hoblitt)__ Merge pull request [#24](../../issues/24) from jhoblitt/plumbing/update
@@ -15,6 +26,7 @@ update build/test plumbing
 explictly use the change action for udevadm trigger
  * [5f7b5ab](../../commit/5f7b5ab) - __(Eric Cook)__ remove ruby < 2.0 testing
  * [2f5addf](../../commit/2f5addf) - __(Eric Cook)__ explictly use the change action for udevadm trigger centos 6 defaults to --action=add https://lists.ubuntu.com/archives/ubuntu-devel/2009-January/027260.html https://bugzilla.redhat.com/show_bug.cgi?id=570355
+ * [87b2e87](../../commit/87b2e87) - __(Pat Riehecky)__ Use udev::params for default parameter values
  * [4abfdeb](../../commit/4abfdeb) - __(Joshua Hoblitt)__ Merge pull request [#16](../../issues/16) from noodle10000/master
 
 Fix params.pp where Fedora release version is checked
