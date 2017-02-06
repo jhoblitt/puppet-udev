@@ -90,6 +90,17 @@ udev::rule { '99-foo.rules':
 }
 ```
 
+Rules may also be created as a parameter off of the `udev` class
+
+```puppet
+class { 'udev':
+  rules => { '99-foo.rules':
+               ensure  => present,
+               content => template('mymodule/foo.rules.erb'), }
+}
+
+```
+
 ### Manually triggering a `udev` device rules reload
 
 ```puppet
