@@ -1,25 +1,22 @@
 require 'spec_helper'
 
-describe 'udev', :type => :class do
-
+describe 'udev', type: :class do
   shared_examples 'udev_log_param' do |udev_log, config_file_replace, params|
     let(:params) { params }
 
     it do
-      should contain_class('udev')
-      should contain_package('udev').with_ensure('present')
-      should contain_file('/etc/udev/udev.conf').
-        with({
-          :ensure              => 'file',
-          :owner               => 'root',
-          :group               => 'root',
-          :mode                => '0644',
-          :config_file_replace => $config_file_replace,
-        }).
-        with_content(/udev_log="#{udev_log}"/)
-      should contain_class('udev::udevadm::trigger')
-      should contain_class('udev::udevadm::logpriority').
-        with_udev_log(udev_log)
+      is_expected.to contain_class('udev')
+      is_expected.to contain_package('udev').with_ensure('present')
+      is_expected.to contain_file('/etc/udev/udev.conf')
+        .with(ensure: 'file',
+              owner: 'root',
+              group: 'root',
+              mode: '0644',
+              replace: config_file_replace)
+        .with_content(%r{udev_log="#{udev_log}"})
+      is_expected.to contain_class('udev::udevadm::trigger')
+      is_expected.to contain_class('udev::udevadm::logpriority')
+        .with_udev_log(udev_log)
     end
   end
 

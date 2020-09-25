@@ -1,11 +1,11 @@
 require 'spec_helper_acceptance'
 
 describe 'udev class' do
-  if $systemd
-    package_name = 'systemd'
-  else
-    package_name = 'udev'
-  end
+  package_name = if run_shell('ps -p 1 -o comm=').stdout =~ %r{systemd}
+                   'systemd'
+                 else
+                   'udev'
+                 end
 
   describe 'running puppet code' do
     let(:pp) do
