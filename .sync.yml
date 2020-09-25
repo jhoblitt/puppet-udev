@@ -8,4 +8,4 @@
       - ---travis_el
       - travis_el6
       - travis_el7
-      - travis_el8
+      # - travis_el8 # Uncomment after adding el8 support and run pdk update
