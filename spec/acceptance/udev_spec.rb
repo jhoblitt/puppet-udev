@@ -8,8 +8,8 @@ describe 'udev class' do
   end
 
   describe 'running puppet code' do
-    it 'should work with no errors' do
-      pp = <<-EOS
+    let(:pp) do
+      <<-EOS
         class { 'udev': udev_log => 'debug' }
 
         udev::rule { '51-android.rules':
@@ -20,36 +20,38 @@ describe 'udev class' do
           content => 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"',
         }
       EOS
-
-      apply2(pp)
     end
-  end
 
-  describe package(package_name) do
-    it { should be_installed }
-  end
+    it 'should work with no errors' do
+      idempotent_apply(pp)
+    end
 
-  describe file('/etc/udev/udev.conf') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'udev_log="debug"' }
-  end
+    describe package(package_name) do
+      it { should be_installed }
+    end
 
-  describe file('/etc/udev/rules.d/51-android.rules') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
-  end
+    describe file('/etc/udev/udev.conf') do
+      it { should be_file }
+      it { should be_owned_by 'root' }
+      it { should be_grouped_into 'root' }
+      it { should be_mode 644 }
+      it { should contain 'udev_log="debug"' }
+    end
 
-  describe file('/etc/udev/rules.d/60-raw.rules') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
+    describe file('/etc/udev/rules.d/51-android.rules') do
+      it { should be_file }
+      it { should be_owned_by 'root' }
+      it { should be_grouped_into 'root' }
+      it { should be_mode 644 }
+      it { should contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
+    end
+
+    describe file('/etc/udev/rules.d/60-raw.rules') do
+      it { should be_file }
+      it { should be_owned_by 'root' }
+      it { should be_grouped_into 'root' }
+      it { should be_mode 644 }
+      it { should contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
+    end
   end
 end
