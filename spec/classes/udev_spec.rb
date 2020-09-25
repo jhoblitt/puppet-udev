@@ -10,11 +10,11 @@ describe 'udev', :type => :class do
       should contain_package('udev').with_ensure('present')
       should contain_file('/etc/udev/udev.conf').
         with({
-          :ensure              => 'file',
-          :owner               => 'root',
-          :group               => 'root',
-          :mode                => '0644',
-          :config_file_replace => $config_file_replace,
+          :ensure  => 'file',
+          :owner   => 'root',
+          :group   => 'root',
+          :mode    => '0644',
+          :replace => config_file_replace,
         }).
         with_content(/udev_log="#{udev_log}"/)
       should contain_class('udev::udevadm::trigger')
