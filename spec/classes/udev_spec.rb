@@ -23,9 +23,9 @@ describe 'udev', type: :class do
   describe 'for osfamily RedHat' do
     let :facts do
       {
-        :osfamily                  => 'RedHat',
-        :operatingsystemmajrelease => '6',
-        :operatingsystem           => 'RedHat',
+        osfamily: 'RedHat',
+        operatingsystemmajrelease: '6',
+        operatingsystem: 'RedHat',
       }
     end
 
@@ -34,60 +34,58 @@ describe 'udev', type: :class do
     end
 
     describe 'udev_log => err, config_file_replace => true' do
-      it_behaves_like('udev_log_param', 'err', true, { :udev_log => 'err', :config_file_replace => true })
+      it_behaves_like('udev_log_param', 'err', true, udev_log: 'err', config_file_replace: true)
     end
 
     describe 'udev_log => info, config_file_replace => true' do
-      it_behaves_like('udev_log_param', 'info', true, { :udev_log => 'info', :config_file_replace => true })
+      it_behaves_like('udev_log_param', 'info', true, udev_log: 'info', config_file_replace: true)
     end
 
     describe 'udev_log => debug, config_file_replace => true' do
-      it_behaves_like('udev_log_param', 'debug', true, { :udev_log => 'debug', :config_file_replace => true })
+      it_behaves_like('udev_log_param', 'debug', true, udev_log: 'debug', config_file_replace: true)
     end
 
     describe 'udev_log => err, config_file_replace => false' do
-      it_behaves_like('udev_log_param', 'err', false, { :udev_log => 'err', :config_file_replace => false })
+      it_behaves_like('udev_log_param', 'err', false, udev_log: 'err', config_file_replace: false)
     end
 
     describe 'udev_log => info, config_file_replace => false' do
-      it_behaves_like('udev_log_param', 'info', false, { :udev_log => 'info', :config_file_replace => false })
+      it_behaves_like('udev_log_param', 'info', false, udev_log: 'info', config_file_replace: false)
     end
 
     describe 'udev_log => debug, config_file_replace => false' do
-      it_behaves_like('udev_log_param', 'debug', false, { :udev_log => 'debug', :config_file_replace => false })
+      it_behaves_like('udev_log_param', 'debug', false, udev_log: 'debug', config_file_replace: false)
     end
 
     describe 'udev_log => invalid' do
-      let(:params) {{ :udev_log => 'invalid' }}
+      let(:params) { { udev_log: 'invalid' } }
 
-      it 'should fail' do
+      it 'fails' do
         expect {
-          should contain_class('udev')
-        }.to raise_error(Puppet::Error, /does not match/)
+          is_expected.to contain_class('udev')
+        }.to raise_error(Puppet::Error, %r{does not match})
       end
     end
 
     describe 'config_file_replace => invalid' do
-      let(:params) {{ :config_file_replace => 'invalid' }}
+      let(:params) { { config_file_replace: 'invalid' } }
 
-      it 'should fail' do
+      it 'fails' do
         expect {
-          should contain_class('udev')
-        }.to raise_error(Puppet::Error, /is not a boolean/)
+          is_expected.to contain_class('udev')
+        }.to raise_error(Puppet::Error, %r{is not a boolean})
       end
     end
 
     describe 'rule parameter' do
-      let(:params) {{ 'rules' => { '99-foo.rules' => { 'content' => 'generic_rule' }}}}
-      it { should contain_file("/etc/udev/rules.d/99-foo.rules").with({
-          :owner   => 'root',
-          :group   => 'root',
-          :mode    => '0644',
-          :content => 'generic_rule',
-      })}
+      let(:params) { { 'rules' => { '99-foo.rules' => { 'content' => 'generic_rule' } } } }
+
+      it {
+        is_expected.to contain_file('/etc/udev/rules.d/99-foo.rules').with(owner: 'root',
+                                                                           group: 'root',
+                                                                           mode: '0644',
+                                                                           content: 'generic_rule')
+      }
     end
-
   end
-
-
 end

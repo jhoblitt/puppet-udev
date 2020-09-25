@@ -1,17 +1,14 @@
 require 'spec_helper'
 
-describe 'udev::udevadm::logpriority', :type => :class do
-
+describe 'udev::udevadm::logpriority', type: :class do
   shared_examples 'udev_log_param_redhat_6' do |udev_log, params|
     let(:params) { params }
 
     it do
-      should contain_class('udev::udevadm::logpriority').
-        with_udev_log(udev_log)
-      should contain_exec("udevadm control --log-priority=#{udev_log}").with({
-        :refreshonly => true,
-        :path        => '/sbin',
-      })
+      is_expected.to contain_class('udev::udevadm::logpriority')
+        .with_udev_log(udev_log)
+      is_expected.to contain_exec("udevadm control --log-priority=#{udev_log}").with(refreshonly: true,
+                                                                                     path: '/sbin')
     end
   end
 
@@ -19,21 +16,18 @@ describe 'udev::udevadm::logpriority', :type => :class do
     let(:params) { params }
 
     it do
-      should contain_class('udev::udevadm::logpriority').
-        with_udev_log(udev_log)
-      should contain_exec("udevcontrol log_priority=#{udev_log}").with({
-        :refreshonly => true,
-        :path        => '/sbin',
-      })
+      is_expected.to contain_class('udev::udevadm::logpriority')
+        .with_udev_log(udev_log)
+      is_expected.to contain_exec("udevcontrol log_priority=#{udev_log}").with(refreshonly: true,
+                                                                               path: '/sbin')
     end
   end
 
   describe 'for osfamily RedHat and operatingsystemmajrelease 6' do
     let(:facts) do
-        { :osfamily                  => 'RedHat',
-          :operatingsystemmajrelease => '6',
-          :operatingsystem           => 'RedHat',
-        }
+      { osfamily: 'RedHat',
+        operatingsystemmajrelease: '6',
+        operatingsystem: 'RedHat' }
     end
 
     describe 'no params' do
@@ -41,35 +35,33 @@ describe 'udev::udevadm::logpriority', :type => :class do
     end
 
     describe 'udev_log => err' do
-      it_behaves_like('udev_log_param_redhat_6', 'err', { :udev_log => 'err' })
+      it_behaves_like('udev_log_param_redhat_6', 'err', udev_log: 'err')
     end
 
     describe 'udev_log => info' do
-      it_behaves_like('udev_log_param_redhat_6', 'info', { :udev_log => 'info' })
+      it_behaves_like('udev_log_param_redhat_6', 'info', udev_log: 'info')
     end
 
     describe 'udev_log => debug' do
-      it_behaves_like('udev_log_param_redhat_6', 'debug', { :udev_log => 'debug' })
+      it_behaves_like('udev_log_param_redhat_6', 'debug', udev_log: 'debug')
     end
 
     describe 'udev_log => invalid' do
-      let(:params) {{ :udev_log => 'invalid' }}
+      let(:params) { { udev_log: 'invalid' } }
 
-      it 'should fail' do
+      it 'fails' do
         expect {
-          should contain_class('udev::udevadm::logpriority')
-        }.to raise_error(Puppet::Error, /does not match/)
+          is_expected.to contain_class('udev::udevadm::logpriority')
+        }.to raise_error(Puppet::Error, %r{does not match})
       end
     end
-
   end
 
   describe 'for osfamily RedHat and operatingsystemmajrelease 5' do
     let(:facts) do
-        { :osfamily                  => 'RedHat',
-          :operatingsystemmajrelease => '5',
-          :operatingsystem           => 'RedHat',
-        }
+      { osfamily: 'RedHat',
+        operatingsystemmajrelease: '5',
+        operatingsystem: 'RedHat' }
     end
 
     describe 'no params' do
@@ -77,27 +69,25 @@ describe 'udev::udevadm::logpriority', :type => :class do
     end
 
     describe 'udev_log => err' do
-      it_behaves_like('udev_log_param_redhat_5', 'err', { :udev_log => 'err' })
+      it_behaves_like('udev_log_param_redhat_5', 'err', udev_log: 'err')
     end
 
     describe 'udev_log => info' do
-      it_behaves_like('udev_log_param_redhat_5', 'info', { :udev_log => 'info' })
+      it_behaves_like('udev_log_param_redhat_5', 'info', udev_log: 'info')
     end
 
     describe 'udev_log => debug' do
-      it_behaves_like('udev_log_param_redhat_5', 'debug', { :udev_log => 'debug' })
+      it_behaves_like('udev_log_param_redhat_5', 'debug', udev_log: 'debug')
     end
 
     describe 'udev_log => invalid' do
-      let(:params) {{ :udev_log => 'invalid' }}
+      let(:params) { { udev_log: 'invalid' } }
 
-      it 'should fail' do
+      it 'fails' do
         expect {
-          should contain_class('udev::udevadm::logpriority')
-        }.to raise_error(Puppet::Error, /does not match/)
+          is_expected.to contain_class('udev::udevadm::logpriority')
+        }.to raise_error(Puppet::Error, %r{does not match})
       end
     end
-
   end
-
 end

@@ -22,36 +22,36 @@ describe 'udev class' do
       EOS
     end
 
-    it 'should work with no errors' do
+    it 'works with no errors' do
       idempotent_apply(pp)
     end
 
     describe package(package_name) do
-      it { should be_installed }
+      it { is_expected.to be_installed }
     end
 
     describe file('/etc/udev/udev.conf') do
-      it { should be_file }
-      it { should be_owned_by 'root' }
-      it { should be_grouped_into 'root' }
-      it { should be_mode 644 }
-      it { should contain 'udev_log="debug"' }
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'udev_log="debug"' }
     end
 
     describe file('/etc/udev/rules.d/51-android.rules') do
-      it { should be_file }
-      it { should be_owned_by 'root' }
-      it { should be_grouped_into 'root' }
-      it { should be_mode 644 }
-      it { should contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
     end
 
     describe file('/etc/udev/rules.d/60-raw.rules') do
-      it { should be_file }
-      it { should be_owned_by 'root' }
-      it { should be_grouped_into 'root' }
-      it { should be_mode 644 }
-      it { should contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
     end
   end
 end
