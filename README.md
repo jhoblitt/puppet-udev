@@ -126,14 +126,15 @@ file (one without any fragments).
 * el6.x
 * el5.x
 * el7.x
+* el8.x
 * Debian/Ubuntu
 
 ### Puppet Version Compatibility
 
-Versions | Puppet 2.7 | Puppet 3.x | Puppet 4.x
-:--------|:----------:|:----------:|:----------:
-**1.x**  | **yes**    | **yes**    | no
-**2.x**  | no         | **yes**    | **yes**
+Versions | Puppet 2.7 | Puppet 3.x | Puppet 4.x | Puppet 5.x
+:--------|:----------:|:----------:|:----------:|:----------:
+**1.x**  | **yes**    | **yes**    | no         | no
+**2.x**  | no         | **yes**    | **yes**    | **yes**
 
 
 Versioning
