@@ -7,6 +7,12 @@
   "source": "https://github.com/jhoblitt/puppet-udev.git",
   "project_page": "https://github.com/jhoblitt/puppet-udev",
   "issues_url": "https://github.com/jhoblitt/puppet-udev/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.6.0 < 7.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -49,10 +55,13 @@
       ]
     }
   ],
-  "dependencies": [
+  "requirements": [
     {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.6.0 < 7.0.0"
+      "name": "puppet",
+      "version_requirement": ">= 5.5.0 < 7.0.0"
     }
-  ]
+  ],
+  "pdk-version": "1.18.1",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }

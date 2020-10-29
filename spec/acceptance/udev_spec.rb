@@ -1,15 +1,15 @@
 require 'spec_helper_acceptance'
 
 describe 'udev class' do
-  if $systemd
-    package_name = 'systemd'
-  else
-    package_name = 'udev'
-  end
+  package_name = if run_shell('ps -p 1 -o comm=').stdout =~ %r{systemd}
+                   'systemd'
+                 else
+                   'udev'
+                 end
 
   describe 'running puppet code' do
-    it 'should work with no errors' do
-      pp = <<-EOS
+    let(:pp) do
+      <<-EOS
         class { 'udev': udev_log => 'debug' }
 
         udev::rule { '51-android.rules':
@@ -20,36 +20,38 @@ describe 'udev class' do
           content => 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"',
         }
       EOS
-
-      apply2(pp)
     end
-  end
 
-  describe package(package_name) do
-    it { should be_installed }
-  end
+    it 'works with no errors' do
+      idempotent_apply(pp)
+    end
 
-  describe file('/etc/udev/udev.conf') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'udev_log="debug"' }
-  end
+    describe package(package_name) do
+      it { is_expected.to be_installed }
+    end
 
-  describe file('/etc/udev/rules.d/51-android.rules') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
-  end
+    describe file('/etc/udev/udev.conf') do
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'udev_log="debug"' }
+    end
 
-  describe file('/etc/udev/rules.d/60-raw.rules') do
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_mode 644 }
-    it { should contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
+    describe file('/etc/udev/rules.d/51-android.rules') do
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="22b8", ATTRS{idProduct}=="4372", MODE="0660", OWNER="vagrant"' }
+    end
+
+    describe file('/etc/udev/rules.d/60-raw.rules') do
+      it { is_expected.to be_file }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+      it { is_expected.to be_mode 644 }
+      it { is_expected.to contain 'ACTION=="add", KERNEL=="sda", RUN+="/bin/raw /dev/raw/raw1 %N"' }
+    end
   end
 end
