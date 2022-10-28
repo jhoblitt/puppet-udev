@@ -127,6 +127,7 @@ file (one without any fragments).
 * el5.x
 * el7.x
 * el8.x
+* el9.x
 * Debian/Ubuntu
 
 ### Puppet Version Compatibility
